@@ -18,7 +18,17 @@ jobs:
         run: |
           ls ${{ github.workspace }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
-      - run: date > test.txt
+      - name: git setting
+        run: |
+          git config --local user.name  "TaHoshi"
+          git config --local user.email "thoshino@ovice.co"
+      - name: Commit files
+        run: |
+          date > test.txt          
+          git add .
+          git commit -m "generated"
+          git push
 
 # cron
-# 
+# shell command
+# checkout => git commit push
